@@ -24,22 +24,31 @@ Or install it yourself as:
 
 First require the gem:
 
-```require 'speakerdeck_api'
+```ruby
+require 'speakerdeck_api'
+```
 
-At the moment, you can get the number of talks by a speaker via de
-SpeakerdeckApi::Speaker class
+At the moment, you can get the number of talks by a speaker via the
+SpeakerdeckApi::Speaker class.
 
-```speaker = SpeakerdeckApi::Speaker.get 'speakerdeck.com user'
+```ruby
+speaker = SpeakerdeckApi::Speaker.get 'speakerdeck.com user'
+```
 
-This return an object with the _number_of_talks_ attribute:
+This return an object with the number_of_talks attribute:
 
-```speaker.number_of_talks
-```=> 8
+```ruby
+speaker.number_of_talks
+=> 8
+```
 
 You will get a SpeakerNotFound exception in case the provided speaker
-name does not correspond to a speackerdeck.com user
+name does not correspond to a speackerdeck.com user.
 
+## Upcoming
 
+* Retrive more information about the speaker
+* Add SpeakerdeckApi::Talk class to retrieve talk details
 
 ## Contributing
 
