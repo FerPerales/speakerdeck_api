@@ -14,7 +14,7 @@ module SpeakerdeckApi
     describe '.get_speaker_data' do
       context 'with valid url' do
         it 'returns a parseable object' do
-          expect(subject.new.get_speaker_data(valid_speaker)).to_not be_nil
+          expect(subject.new.get_speaker_data(valid_speaker)).to be_a Nokogiri::HTML::Document
         end
 
       end

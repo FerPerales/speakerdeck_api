@@ -19,6 +19,17 @@ module SpeakerdeckApi
         it 'returns a SpeakerdeckApi::Speaker object' do
           expect(subject.get('ferperales')).to be_a SpeakerdeckApi::Speaker
         end
+
+        it 'contains the number of talks' do
+          expect(subject.get('ferperales')).to respond_to :number_of_talks
+        end
+
+        it 'contains the number of talks' do
+          expect(subject.get('ferperales').number_of_talks).to eql 14
+        end
+
+
+
       end
 
     end
