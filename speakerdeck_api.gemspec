@@ -8,8 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = SpeakerdeckApi::VERSION
   spec.authors       = ["Fer Perales"]
   spec.email         = ["me@ferperales.net"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{A gem for getting data from speakerdeck.com}
   spec.homepage      = ""
   spec.license       = "MIT"
 
