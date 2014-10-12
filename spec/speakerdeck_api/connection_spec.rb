@@ -3,28 +3,34 @@ require 'spec_helper'
 module SpeakerdeckApi
   describe Connection do
 
+    let(:valid_speaker) { 'ferperales' }
+    let(:invalid_speaker) { 'jondoe' }
     let(:subject) { SpeakerdeckApi::Connection }
-    let(:valid_url) { 'https://speakerdeck.com/ferperales' }
-    let(:invalid_url) { 'https://speakerdeck.com/jondoe' }
 
     it 'has a base URL' do
-      expect(subject::BASE_URL).to match(/https\:\/\/speakerdeck.com/)
+      expect(subject::BASE_URL).to be_eql('https://speakerdeck.com/')
     end
 
-    describe '.get_data' do
+    describe '.get_speaker_data' do
       context 'with valid url' do
         it 'returns a parseable object' do
-          expect(subject::get_data(valid_url)).to_not be_nil
+          expect(subject.new.get_speaker_data(valid_speaker)).to_not be_nil
         end
 
       end
 
       context 'with invalid url' do
         it 'raises a OpenURI::HTTPError' do
-          expect { subject::get_data(invalid_url)}.to raise_error OpenURI::HTTPError
+          expect { subject.new.get_speaker_data(invalid_speaker)}.to raise_error OpenURI::HTTPError
         end
       end
+    end
 
+
+    describe '.url_for_speaker' do
+      it 'returns the correct URL' do
+        expect(subject.new.url_for_speaker('ferperales')).to be_eql('https://speakerdeck.com/ferperales')
+      end
     end
   end
 end
