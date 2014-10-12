@@ -1,5 +1,7 @@
 # SpeakerdeckApi
 
+[![Build Status](https://travis-ci.org/FerPerales/speakerdeck_api.png?branch=master)](https://travis-ci.org/FerPerales/speakerdeck_api)
+
 TODO: Write a gem description
 
 ## Installation
