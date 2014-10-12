@@ -5,5 +5,4 @@ require 'speakerdeck_api/speaker'
 require 'speakerdeck_api/exceptions/speaker_not_found_exception'
 
 module SpeakerdeckApi
-  # Your code goes here...
 end
