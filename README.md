@@ -2,6 +2,10 @@
 
 [![Build Status](https://travis-ci.org/FerPerales/speakerdeck_api.png?branch=master)](https://travis-ci.org/FerPerales/speakerdeck_api)
 
+[![Gem Version](https://badge.fury.io/rb/speakerdeck_api.png)](http://badge.fury.io/rb/speakerdeck_api)
+
+[![Coverage Status](https://coveralls.io/repos/FerPerales/speakerdeck_api/badge.png)](https://coveralls.io/r/FerPerales/speakerdeck-api)
+
 A gem for getting data from speakerdeck.com
 
 ## Installation
