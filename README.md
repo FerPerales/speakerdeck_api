@@ -47,7 +47,7 @@ speaker.number_of_talks
 speaker.name
 => Fake Guy
 speaker.website
-=> fakeg.uy
+=> http://fakeg.uy/
 ```
 
 You will get a SpeakerNotFound exception in case the provided speaker
