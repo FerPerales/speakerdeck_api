@@ -28,6 +28,15 @@ module SpeakerdeckApi
           it 'contains the right value' do
             expect(subject.get_speaker_details(speaker_profile_page).values_at(:name)).to eql(["Fernando Perales"])
           end
+
+          it 'contains the "website" key' do
+            expect(subject.get_speaker_details(speaker_profile_page)).to have_key(:website)
+          end
+
+          it 'contains the right value' do
+            expect(subject.get_speaker_details(speaker_profile_page).values_at(:website)).to eql(["http://ferperales.net/"])
+          end
+
         end
       end
     end

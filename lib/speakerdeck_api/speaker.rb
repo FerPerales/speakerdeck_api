@@ -2,11 +2,12 @@ module SpeakerdeckApi
 
   class Speaker
 
-    attr_reader :number_of_talks, :name
+    attr_reader :number_of_talks, :name, :website
 
     def initialize(params = {})
       @number_of_talks = params[:number_of_talks] || 0
       @name = params[:name] || ''
+      @website = params[:website] || ''
     end
 
     def self.get(speaker_name)

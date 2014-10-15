@@ -37,6 +37,14 @@ module SpeakerdeckApi
           expect(subject.get('ferperales').name).to eql 'Fernando Perales'
         end
 
+        it 'contains the website attribute' do
+          expect(subject.get('ferperales')).to respond_to :website
+        end
+
+        it 'contains the correct website number' do
+          expect(subject.get('ferperales').website).to eql 'http://ferperales.net/'
+        end
+
       end
     end
   end
