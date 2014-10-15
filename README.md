@@ -45,9 +45,9 @@ This return an object with the *number of talks*, *name*, and *website* attribut
 speaker.number_of_talks
 => 8
 speaker.name
-=> Fake Guy
+=> 'Fake Guy'
 speaker.website
-=> http://fakeg.uy/
+=> 'http://fakeg.uy/'
 ```
 
 You will get a SpeakerNotFound exception in case the provided speaker
