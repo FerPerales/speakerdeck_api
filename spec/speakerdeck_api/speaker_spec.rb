@@ -16,24 +16,28 @@ module SpeakerdeckApi
       end
 
       context 'with a valid username' do
+
         it 'returns a SpeakerdeckApi::Speaker object' do
           expect(subject.get('ferperales')).to be_a SpeakerdeckApi::Speaker
         end
 
-        it 'contains the number of talks' do
+        it 'contains the number_of_talks attribute' do
           expect(subject.get('ferperales')).to respond_to :number_of_talks
         end
 
-        it 'contains the number of talks' do
+        it 'contains the correct number of talks' do
           expect(subject.get('ferperales').number_of_talks).to eql 14
         end
 
+        it 'contains the name attribute' do
+          expect(subject.get('ferperales')).to respond_to :name
+        end
 
+        it 'contains the correct name number' do
+          expect(subject.get('ferperales').name).to eql 'Fernando Perales'
+        end
 
       end
-
     end
-
   end
-
 end

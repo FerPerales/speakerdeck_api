@@ -20,6 +20,14 @@ module SpeakerdeckApi
           it 'contains the right value' do
             expect(subject.get_speaker_details(speaker_profile_page).values_at(:number_of_talks)).to eql([14])
           end
+
+          it 'contains the "name" key' do
+            expect(subject.get_speaker_details(speaker_profile_page)).to have_key(:name)
+          end
+
+          it 'contains the right value' do
+            expect(subject.get_speaker_details(speaker_profile_page).values_at(:name)).to eql(["Fernando Perales"])
+          end
         end
       end
     end
