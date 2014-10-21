@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 module SpeakerdeckApi
   describe Parser do
 
@@ -8,6 +10,16 @@ module SpeakerdeckApi
       f.close
       doc
     end
+
+    let(:speaker_without_info) do
+      path = File.join(File.dirname(File.expand_path(__FILE__)), "../fixtures/speaker_without_info.html")
+      f = File.open(path)
+      doc = Nokogiri::XML(f)
+      f.close
+      doc
+    end
+
+
 
     context 'speakers' do
       describe '.get_speaker_details' do
@@ -37,6 +49,16 @@ module SpeakerdeckApi
             expect(subject.get_speaker_details(speaker_profile_page).values_at(:website)).to eql(["http://ferperales.net/"])
           end
 
+        end
+      end
+
+      context 'speaker with no info' do
+        it 'contains the "name" key' do
+          expect(subject.get_speaker_details(speaker_without_info).values_at(:name)).to eql(["Erik Michaels-Ober"])
+        end
+
+        it 'contains the "website" key as empty string' do
+          expect(subject.get_speaker_details(speaker_without_info).values_at(:website)).to eql([""])
         end
       end
     end

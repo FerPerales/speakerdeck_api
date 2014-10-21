@@ -5,7 +5,8 @@ module SpeakerdeckApi
       info = {}
       info[:number_of_talks] = speaker_html.css('.talk.public').size
       info[:name] = speaker_html.css('.sidebar > h2').text
-      info[:website] = speaker_html.css('.bio > p > a').attribute('href').value
+      website = speaker_html.css('.bio > p > a')
+      info[:website] = website.empty? ? '' : website.attribute('href').value
       info
     end
   end
