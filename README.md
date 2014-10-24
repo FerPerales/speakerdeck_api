@@ -4,7 +4,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/speakerdeck_api.png)](http://badge.fury.io/rb/speakerdeck_api)
 
-[![Coverage Status](https://coveralls.io/repos/FerPerales/speakerdeck_api/badge.png)](https://coveralls.io/r/FerPerales/speakerdeck-api)
+[![Coverage Status](https://coveralls.io/repos/FerPerales/speakerdeck-api/badge.png?branch=master)](https://coveralls.io/r/FerPerales/speakerdeck-api?branch=master)
 
 A gem for getting data from speakerdeck.com
 
