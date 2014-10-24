@@ -57,7 +57,7 @@ name does not correspond to a speackerdeck.com user.
 
 - [x] Retrive more information about the speaker
 - [ ] Add SpeakerdeckApi::Talk class to retrieve talk details
-- [ ] Add VCR for testing
+- [x] Add VCR for testing
 
 ## Contributing
 
