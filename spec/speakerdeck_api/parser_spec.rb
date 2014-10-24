@@ -3,45 +3,26 @@ require 'spec_helper'
 module SpeakerdeckApi
   describe Parser do
 
-    let(:speaker_profile_page) do
-      path = File.join(File.dirname(File.expand_path(__FILE__)), "../fixtures/speaker_profile.html")
-      f = File.open(path)
-      doc = Nokogiri::XML(f)
-      f.close
-      doc
-    end
-
-    let(:speaker_without_info) do
-      path = File.join(File.dirname(File.expand_path(__FILE__)), "../fixtures/speaker_without_info.html")
-      f = File.open(path)
-      doc = Nokogiri::XML(f)
-      f.close
-      doc
-    end
-
-
-
     context 'speakers' do
       describe '.get_speaker_details' do
-        context 'valid speaker' do
+        context 'valid speaker with complete info' do
 
-          it 'contains the "number of talks" key' do
-            expect(subject.get_speaker_details(speaker_profile_page)).to have_key(:number_of_talks)
+          let(:speaker_profile_page) do
+            VCR.use_cassette('speaker_profile_with_complete_info') do
+              Nokogiri::HTML(open('https://speakerdeck.com/ferperales'))
+            end
           end
 
-          it 'contains the right value' do
+
+          it 'contains the number_of_talks key and correct value' do
             expect(subject.get_speaker_details(speaker_profile_page).values_at(:number_of_talks)).to eql([14])
           end
 
-          it 'contains the "name" key' do
-            expect(subject.get_speaker_details(speaker_profile_page)).to have_key(:name)
-          end
-
-          it 'contains the right value' do
+          it 'contains the name key and correct value' do
             expect(subject.get_speaker_details(speaker_profile_page).values_at(:name)).to eql(["Fernando Perales"])
           end
 
-          it 'contains the "website" key' do
+          it 'contains the website key and correct value' do
             expect(subject.get_speaker_details(speaker_profile_page)).to have_key(:website)
           end
 
@@ -50,15 +31,22 @@ module SpeakerdeckApi
           end
 
         end
-      end
 
-      context 'speaker with no info' do
-        it 'contains the "name" key' do
-          expect(subject.get_speaker_details(speaker_without_info).values_at(:name)).to eql(["Erik Michaels-Ober"])
-        end
+        context 'valid speaker with no info' do
 
-        it 'contains the "website" key as empty string' do
-          expect(subject.get_speaker_details(speaker_without_info).values_at(:website)).to eql([""])
+          let(:speaker_without_info) do
+            VCR.use_cassette('speaker_profile_without_info') do
+              Nokogiri::HTML(open('https://speakerdeck.com/sferik'))
+            end
+          end
+
+          it 'contains the name key and correct value' do
+            expect(subject.get_speaker_details(speaker_without_info).values_at(:name)).to eql(["Erik Michaels-Ober"])
+          end
+
+          it 'contains the "website" key as empty string' do
+            expect(subject.get_speaker_details(speaker_without_info).values_at(:website)).to eql([""])
+          end
         end
       end
     end
